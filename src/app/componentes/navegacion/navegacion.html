@@ -1,51 +1,71 @@
 <nav class="navbar">
 
-    <a href="/" class="logo-manila">
-    <svg viewBox="0 0 100 100" class="icono-logo">
-        <circle cx="50" cy="50" r="43"
-                fill="none" stroke="currentColor" stroke-width="1.5"/>
-        <path d="M27 68 V34 L50 57 L73 34 V68"
-            fill="none" stroke="currentColor"
-            stroke-width="3" stroke-linecap="round"
-            stroke-linejoin="round"/>
-        <path d="M36 26 H64"
-            stroke="currentColor" stroke-width="1.5"/>
-        <circle cx="50" cy="20" r="2" fill="currentColor"/>
-    </svg>
+    <a routerLink="/" class="logo-manila">
+        <svg viewBox="0 0 100 100" class="icono-logo">
+            <circle cx="50" cy="50" r="43"
+                    fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M27 68 V34 L50 57 L73 34 V68"
+                    fill="none" stroke="currentColor"
+                    stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round"/>
+            <path d="M36 26 H64"
+                    stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="50" cy="20" r="2" fill="currentColor"/>
+        </svg>
 
-    <span class="logo-texto">
-        <strong>MANILA</strong>
-        <small>SABOR Y EXPERIENCIA</small>
-    </span>
-</a>
+        <span class="logo-texto">
+            <strong>MANILA</strong>
+            <small>SABOR Y EXPERIENCIA</small>
+        </span>
+    </a>
 
-    <div class="menu">
+    <button
+        class="boton-menu"
+        type="button"
+        (click)="menuAbierto = !menuAbierto"
+        [attr.aria-expanded]="menuAbierto"
+        aria-label="Abrir o cerrar menú">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+    <div class="menu" [class.menu-abierto]="menuAbierto">
 
         <a routerLink="/"
             routerLinkActive="activo"
-            [routerLinkActiveOptions]="{exact:true}">
+            [routerLinkActiveOptions]="{exact:true}"
+            (click)="cerrarMenu()">
             Inicio
         </a>
 
-        <a routerLink="/comidas" routerLinkActive="activo">
+        <a routerLink="/comidas"
+            routerLinkActive="activo"
+            (click)="cerrarMenu()">
             Comidas
         </a>
 
-        <a routerLink="/bebidas" routerLinkActive="activo">
+        <a routerLink="/bebidas"
+            routerLinkActive="activo"
+            (click)="cerrarMenu()">
             Bebidas
         </a>
 
-        <a routerLink="/juego" routerLinkActive="activo">
+        <a routerLink="/juego"
+            routerLinkActive="activo"
+            (click)="cerrarMenu()">
             Juego
         </a>
 
         <a routerLink="/pedido"
             routerLinkActive="activo"
-            class="boton-pedido">
+            class="boton-pedido"
+            (click)="cerrarMenu()">
             Mi pedido
         </a>
 
     </div>
 
 </nav>
-
