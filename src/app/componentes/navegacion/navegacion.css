@@ -84,12 +84,12 @@
 .menu .boton-pedido:hover,
 .menu .boton-pedido.activo {
     background: #C6A66B;
-    color: #08051F;
+    color: #111111;
 }
 
 .boton-menu {
     display: none;
-    background: #08051F !important;
+    background: #111111 !important;
     border: 1px solid #C6A66B;
     width: 43px;
     height: 40px;
@@ -140,7 +140,7 @@
         align-items: stretch;
         gap: 0;
         padding: 12px 0 8px;
-        background: #08051F;
+        background: #111111;
     }
 
     .menu.menu-abierto {
