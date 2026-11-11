@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, retry } from 'rxjs';
+import { Observable, retry, timeout } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class ComidasService {
 
   private consultar(direccion: string): Observable<any> {
     return this.http.get<any>(this.url + direccion).pipe(
+      timeout(15000),
       retry({
         count: 2,
         delay: 1000
@@ -50,6 +51,10 @@ export class ComidasService {
     return this.consultar(
       'lookup.php?i=' + encodeURIComponent(id)
     );
+  }
+
+  obtenerComidaAleatoria(): Observable<any> {
+    return this.consultar('random.php');
   }
 
 }

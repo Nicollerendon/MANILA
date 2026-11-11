@@ -15,8 +15,8 @@
         </p>
 
         <div class="botones-inicio">
-            <a href="/comidas" class="btn-principal">VER NUESTRO MENÚ</a>
-            <a href="/bebidas" class="btn-secundario">DESCUBRIR BEBIDAS</a>
+            <a routerLink="/comidas" class="btn-principal">VER NUESTRO MENÚ</a>
+            <a routerLink="/bebidas" class="btn-secundario">DESCUBRIR BEBIDAS</a>
         </div>
     </div>
 
@@ -28,6 +28,125 @@
     </div>
 
 </section>
+
+
+<!-- PRODUCTOS DESTACADOS DE LAS API -->
+
+<section class="destacados">
+
+    <div class="destacados-encabezado">
+        <p class="subtitulo">DESCUBRE NUESTRAS RECOMENDACIONES</p>
+        <h2>Nuestros <span>favoritos</span></h2>
+        <p>Conoce dos propuestas para disfrutar de una experiencia deliciosa.</p>
+    </div>
+
+    <div class="destacados-lista">
+
+        <!-- COMIDA OBTENIDA DE THEMEALDB -->
+
+        <article class="producto-destacado">
+
+            <div class="producto-imagen">
+
+                @if (cargandoComida) {
+                    <div class="mensaje-carga">
+                        Cargando plato estrella...
+                    </div>
+                } @else if (comidaEstrella) {
+                    <img
+                        [src]="comidaEstrella.strMealThumb"
+                        [alt]="comidaEstrella.strMeal">
+                } @else {
+                    <div class="mensaje-carga">
+                        No fue posible cargar el plato.
+                    </div>
+                }
+
+                <span class="etiqueta-producto">PLATO DESTACADO</span>
+
+            </div>
+
+            <div class="producto-informacion">
+
+                @if (comidaEstrella) {
+
+                    <h3>{{ comidaEstrella.strMeal }}</h3>
+
+                    <p>
+                        Una preparación seleccionada de nuestra API
+                        para descubrir nuevos sabores.
+                    </p>
+
+                    <a routerLink="/comidas" class="enlace-producto">
+                        DESCUBRIR COMIDAS →
+                    </a>
+
+                } @else if (!cargandoComida) {
+                    <p>Consulta nuestro menú para descubrir las comidas.</p>
+                    <a routerLink="/comidas" class="enlace-producto">
+                        VER MENÚ →
+                    </a>
+                }
+
+            </div>
+
+        </article>
+
+
+        <!-- BEBIDA OBTENIDA DE THECOCKTAILDB -->
+
+        <article class="producto-destacado">
+
+            <div class="producto-imagen">
+
+                @if (cargandoBebida) {
+                    <div class="mensaje-carga">
+                        Cargando bebida estrella...
+                    </div>
+                } @else if (bebidaEstrella) {
+                    <img
+                        [src]="bebidaEstrella.strDrinkThumb"
+                        [alt]="bebidaEstrella.strDrink">
+                } @else {
+                    <div class="mensaje-carga">
+                        No fue posible cargar la bebida.
+                    </div>
+                }
+
+                <span class="etiqueta-producto">BEBIDA DESTACADA</span>
+
+            </div>
+
+            <div class="producto-informacion">
+
+                @if (bebidaEstrella) {
+
+                    <h3>{{ bebidaEstrella.strDrink }}</h3>
+
+                    <p>
+                        Una bebida seleccionada de nuestra API
+                        para acompañar tus momentos especiales.
+                    </p>
+
+                    <a routerLink="/bebidas" class="enlace-producto">
+                        DESCUBRIR BEBIDAS →
+                    </a>
+
+                } @else if (!cargandoBebida) {
+                    <p>Consulta nuestra sección de bebidas.</p>
+                    <a routerLink="/bebidas" class="enlace-producto">
+                        VER BEBIDAS →
+                    </a>
+                }
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
 
 <section class="nosotros">
 
@@ -52,10 +171,11 @@
             Queremos que cada bocado te deje con ganas de volver.
         </p>
 
-        <a href="/comidas" class="btn-nosotros">CONOCE NUESTRO MENÚ</a>
+        <a routerLink="/comidas" class="btn-nosotros">CONOCE NUESTRO MENÚ</a>
     </div>
 
 </section>
+
 
 <section class="valores">
 
@@ -89,12 +209,15 @@
 
 </section>
 
+
 <section class="invitacion">
 
     <p class="subtitulo">TU PRÓXIMO ANTOJO TE ESPERA</p>
 
     <h2>Un buen momento comienza con un buen sabor.</h2>
 
-    <a href="/comidas" class="btn-principal">DESCUBRE NUESTROS PRODUCTOS</a>
+    <a routerLink="/comidas" class="btn-principal">
+        DESCUBRE NUESTROS PRODUCTOS
+    </a>
 
 </section>
