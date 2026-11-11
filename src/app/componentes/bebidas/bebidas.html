@@ -1,0 +1,123 @@
+<section class="menu-restaurante">
+
+    <div
+        class="notificacion-carrito"
+        [class.visible]="toastVisible"
+        role="status"
+        aria-live="polite">
+
+        <span class="icono-exito">✓</span>
+
+        <div>
+            <strong>¡Agregado con éxito!</strong>
+            <p>{{ toastMensaje }}</p>
+        </div>
+
+    </div>
+
+    <header class="menu-encabezado">
+
+        <span class="subtitulo-menu">EL COMPLEMENTO PERFECTO</span>
+
+        <h1>Nuestras bebidas</h1>
+
+        <p>Descubre bebidas y cócteles para disfrutar.</p>
+
+        <div class="linea-dorada"></div>
+
+    </header>
+
+    <div class="menu-herramientas">
+
+        <select [(ngModel)]="tipoBusqueda">
+
+            <option value="nombre">Buscar por nombre</option>
+
+            <option value="ingrediente">Buscar por ingrediente</option>
+
+        </select>
+
+        <input
+            type="text"
+            [(ngModel)]="textoBusqueda"
+            (keyup.enter)="buscar()"
+            placeholder="¿Qué bebida se te antoja?">
+
+        <button type="button" (click)="buscar()">
+            Buscar
+        </button>
+
+    </div>
+
+    <div class="menu-categorias">
+
+        <button
+            *ngFor="let categoria of categorias"
+            type="button"
+            (click)="seleccionarCategoria(categoria)">
+
+            {{ categoria }}
+
+        </button>
+
+        <button
+            *ngFor="let tipo of tipos"
+            type="button"
+            (click)="seleccionarTipo(tipo)"
+            [class.seleccionada]="tipoSeleccionado === tipo">
+
+            {{ tipo }}
+
+        </button>
+
+    </div>
+
+    <p class="mensaje" *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+
+    <div class="productos-galeria">
+
+        <article
+            class="producto-galeria"
+            *ngFor="let bebida of bebidas">
+
+            <div class="producto-foto">
+
+                <img
+                    [src]="bebida.imagen"
+                    [alt]="bebida.nombre">
+
+            </div>
+
+            <div class="producto-detalle">
+
+                <h2>{{ bebida.nombre }}</h2>
+
+                <p>
+                    {{ bebida.ingredientes.length > 0
+                        ? bebida.ingredientes.join(', ')
+                        : 'Una bebida para disfrutar.' }}
+                </p>
+
+                <div class="producto-precio">
+
+                    <span>
+                        {{ bebida.precio | currency:'COP':'symbol':'1.0-0' }}
+                    </span>
+
+                    <button
+                        type="button"
+                        (click)="agregarPedido(bebida)">
+                        Agregar +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>

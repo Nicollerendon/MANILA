@@ -1,0 +1,121 @@
+.juego {
+    padding: 60px 20px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.encabezado-juego {
+    margin-bottom: 30px;
+}
+
+.subtitulo {
+    color: #C6A66B;
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+.encabezado-juego h1 {
+    color: #E0D0AC;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin: 15px 0;
+}
+
+.encabezado-juego p {
+    color: #BDBDBD;
+    font-size: 15px;
+}
+
+.informacion-juego {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    margin: 25px 0;
+    color: #C6A66B;
+    font-size: 15px;
+}
+
+.instruccion {
+    color: #E0D0AC;
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(4, 85px);
+    gap: 12px;
+    justify-content: center;
+    margin: 30px auto;
+}
+
+.casilla {
+    width: 85px;
+    height: 85px;
+    border: 1px solid #C6A66B;
+    border-radius: 12px;
+    background: #171717;
+    color: #C6A66B;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.casilla:hover:not(:disabled) {
+    background: #30291F;
+    transform: scale(1.05);
+}
+
+.casilla.descubierta,
+.casilla.encontrada {
+    background: #30291F;
+    color: #ffffff;
+}
+
+.casilla.encontrada {
+    border: 2px solid #C6A66B;
+}
+
+.boton-juego {
+    margin-top: 20px;
+    padding: 13px 30px;
+    background: #C6A66B;
+    color: #0B0B0B;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-juego:hover {
+    background: #E0D0AC;
+}
+
+.mensaje-ganador {
+    color: #E0D0AC;
+    font-size: 19px;
+    margin: 25px 0;
+}
+
+@media (max-width: 450px) {
+    .tablero {
+        grid-template-columns: repeat(4, 65px);
+        gap: 8px;
+    }
+
+    .casilla {
+        width: 65px;
+        height: 65px;
+        font-size: 27px;
+    }
+
+    .encabezado-juego h1 {
+        font-size: 27px;
+    }
+
+    .informacion-juego {
+        gap: 18px;
+        font-size: 13px;
+    }
+}

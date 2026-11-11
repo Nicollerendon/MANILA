@@ -1,0 +1,44 @@
+<section class="pagina juego">
+
+    <div class="encabezado-juego">
+        <span class="subtitulo">MANILA EXPERIENCE</span>
+        <h1>¡Pon a prueba tu memoria!</h1>
+        <p>Encuentra el plato y la bebida escondidos en la matriz.</p>
+    </div>
+
+    <div class="instruccion">
+        {{ mensaje }}
+    </div>
+
+    <div class="tablero">
+        @for (casilla of casillas; track casilla.id) {
+            <button
+                class="casilla"
+                [class.encontrada]="casilla.encontrada"
+                [class.incorrecta]="casilla.incorrecta"
+                [disabled]="casilla.encontrada || casilla.incorrecta || terminado"
+                (click)="seleccionarCasilla(casilla.id)">
+
+                @if (casilla.encontrada) {
+                    {{ casilla.imagen }}
+                } @else if (casilla.incorrecta) {
+                    ❌
+                } @else {
+                    ?
+                }
+
+            </button>
+        }
+    </div>
+
+    @if (terminado) {
+        <div class="mensaje-ganador">
+            ¡Felicidades! Encontraste el plato y la bebida.
+        </div>
+
+        <button class="boton-juego" (click)="reiniciarJuego()">
+            Jugar nuevamente
+        </button>
+    }
+
+</section>

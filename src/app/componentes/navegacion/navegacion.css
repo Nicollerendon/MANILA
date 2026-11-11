@@ -1,0 +1,37 @@
+.logo-manila {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #C6A66B;
+}
+
+.logo-manila:hover {
+    color: #E0D0AC;
+}
+
+.icono-logo {
+    width: 62px;
+    height: 62px;
+}
+
+.logo-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-texto strong {
+    color: #E0D0AC;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.logo-texto small {
+    color: #C6A66B;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 8px;
+}

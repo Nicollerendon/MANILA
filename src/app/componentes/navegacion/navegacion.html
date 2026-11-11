@@ -1,0 +1,51 @@
+<nav class="navbar">
+
+    <a href="/" class="logo-manila">
+    <svg viewBox="0 0 100 100" class="icono-logo">
+        <circle cx="50" cy="50" r="43"
+                fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M27 68 V34 L50 57 L73 34 V68"
+            fill="none" stroke="currentColor"
+            stroke-width="3" stroke-linecap="round"
+            stroke-linejoin="round"/>
+        <path d="M36 26 H64"
+            stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="50" cy="20" r="2" fill="currentColor"/>
+    </svg>
+
+    <span class="logo-texto">
+        <strong>MANILA</strong>
+        <small>SABOR Y EXPERIENCIA</small>
+    </span>
+</a>
+
+    <div class="menu">
+
+        <a routerLink="/"
+            routerLinkActive="activo"
+            [routerLinkActiveOptions]="{exact:true}">
+            Inicio
+        </a>
+
+        <a routerLink="/comidas" routerLinkActive="activo">
+            Comidas
+        </a>
+
+        <a routerLink="/bebidas" routerLinkActive="activo">
+            Bebidas
+        </a>
+
+        <a routerLink="/juego" routerLinkActive="activo">
+            Juego
+        </a>
+
+        <a routerLink="/pedido"
+            routerLinkActive="activo"
+            class="boton-pedido">
+            Mi pedido
+        </a>
+
+    </div>
+
+</nav>
+

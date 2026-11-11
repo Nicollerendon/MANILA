@@ -1,0 +1,132 @@
+<section class="pagina-pedido">
+
+    <header class="encabezado-pedido">
+        <span class="subtitulo-pedido">MANILA EXPERIENCE</span>
+        <h1>Tu pedido</h1>
+        <p>Preparamos cada detalle para que disfrutes de una gran experiencia.</p>
+        <div class="linea-dorada"></div>
+    </header>
+
+    <main class="contenido-pedido">
+
+        <section class="resumen-pedido">
+
+            <div class="titulo-seccion">
+                <span class="etiqueta-resumen">TU SELECCIÓN</span>
+                <h2>Resumen del pedido</h2>
+                <p>Revisa los productos que elegiste.</p>
+            </div>
+
+            <div class="pedido-vacio" *ngIf="pedidos.length === 0">
+                <span class="icono-vacio">🛒</span>
+                <h3>Tu carrito está vacío</h3>
+                <p>Explora nuestras comidas y bebidas para comenzar.</p>
+            </div>
+
+            <div class="lista-productos" *ngIf="pedidos.length > 0">
+
+                <article class="producto-pedido" *ngFor="let producto of pedidos">
+
+                    <img [src]="producto.imagen" [alt]="producto.nombre">
+
+                    <div class="informacion-producto">
+                        <h3>{{ producto.nombre }}</h3>
+                        <span class="tipo-producto">
+                            {{ producto.tipo === 'comida' ? 'Comida' : 'Bebida' }}
+                        </span>
+
+                        <div class="controles-cantidad">
+                            <button type="button" (click)="disminuir(producto)">−</button>
+                            <span>{{ producto.cantidad || 1 }}</span>
+                            <button type="button" (click)="aumentar(producto)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="precio-producto">
+                        <strong>
+                            {{ (producto.precio * (producto.cantidad || 1)) | currency:'COP':'symbol':'1.0-0' }}
+                        </strong>
+
+                        <button
+                            class="eliminar-producto"
+                            type="button"
+                            (click)="eliminar(producto)">
+                            Eliminar
+                        </button>
+                    </div>
+
+                </article>
+
+            </div>
+
+            <div class="total-pedido">
+                <div>
+                    <span>Total de tu compra</span>
+                    <p>Valor total de los productos seleccionados</p>
+                </div>
+
+                <strong>{{ calcularTotal() | currency:'COP':'symbol':'1.0-0' }}</strong>
+            </div>
+
+        </section>
+
+        <section class="formulario-pedido">
+
+            <div class="titulo-seccion">
+                <span class="etiqueta-resumen">ÚLTIMO PASO</span>
+                <h2>Datos de entrega</h2>
+                <p>Cuéntanos dónde debemos llevar tu pedido.</p>
+            </div>
+
+            <div class="campos-pedido">
+
+                <div class="campo-pedido">
+                    <label for="nombre">Nombre completo</label>
+                    <input
+                        id="nombre"
+                        type="text"
+                        [(ngModel)]="nombre"
+                        placeholder="Ej. María Rodríguez">
+                </div>
+
+                <div class="campo-pedido">
+                    <label for="celular">Número de celular</label>
+                    <input
+                        id="celular"
+                        type="tel"
+                        [(ngModel)]="celular"
+                        placeholder="Ej. 300 000 0000">
+                </div>
+
+                <div class="campo-pedido campo-completo">
+                    <label for="direccion">Dirección de entrega</label>
+                    <input
+                        id="direccion"
+                        type="text"
+                        [(ngModel)]="direccion"
+                        placeholder="Calle, carrera, barrio y número de casa">
+                </div>
+
+            </div>
+
+            <button
+                class="boton-pedido"
+                type="button"
+                (click)="realizarPedido()"
+                [disabled]="pedidos.length === 0">
+                Realizar pedido
+            </button>
+
+            <p class="mensaje-pedido" *ngIf="mensaje" role="status" aria-live="polite">
+                {{ mensaje }}
+            </p>
+
+            <p class="nota-pedido">
+                Gracias por elegir MANILA. ¡Esperamos que disfrutes tu pedido!
+            </p>
+
+        </section>
+
+    </main>
+
+</section>

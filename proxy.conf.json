@@ -1,0 +1,17 @@
+{
+  "/api": {
+    "target": "https://www.themealdb.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/cocktail-api": {
+    "target": "https://www.thecocktaildb.com",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/cocktail-api": "/api"
+    },
+    "logLevel": "debug"
+  }
+}

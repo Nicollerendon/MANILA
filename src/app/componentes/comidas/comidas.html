@@ -1,0 +1,109 @@
+<section class="menu-restaurante">
+
+    <header class="menu-encabezado">
+
+        <span class="subtitulo-menu">DESCUBRE NUESTROS SABORES</span>
+
+        <h1>Nuestras comidas</h1>
+
+        <p>Una selección de sabores preparados para disfrutar.</p>
+
+        <div class="linea-dorada"></div>
+
+    </header>
+
+    <div class="menu-herramientas">
+
+        <select [(ngModel)]="tipoBusqueda">
+
+            <option value="nombre">Buscar por nombre</option>
+
+            <option value="ingrediente">Buscar por ingrediente</option>
+
+        </select>
+
+        <input
+            type="text"
+            [(ngModel)]="textoBusqueda"
+            (keyup.enter)="buscar()"
+            placeholder="¿Qué se te antoja hoy?">
+
+        <button type="button" (click)="buscar()">
+            Buscar
+        </button>
+
+    </div>
+
+    <div class="menu-categorias">
+
+        <button
+            *ngFor="let categoria of categorias"
+            type="button"
+            (click)="seleccionarCategoria(categoria)">
+
+            {{ categoria }}
+
+        </button>
+
+    </div>
+
+    <div class="notificacion-exito" *ngIf="mensajeExito">
+
+        <span class="icono-exito">✓</span>
+
+        <div class="texto-notificacion">
+            <strong>¡Agregado con éxito!</strong>
+            <p>{{ mensajeExito }}</p>
+        </div>
+
+    </div>
+
+    <p class="mensaje" *ngIf="mensaje">
+        {{ mensaje }}
+    </p>
+
+    <div class="productos-galeria">
+
+        <article
+            class="producto-galeria"
+            *ngFor="let comida of comidas">
+
+            <div class="producto-foto">
+
+                <img
+                    [src]="comida.imagen"
+                    [alt]="comida.nombre">
+
+            </div>
+
+            <div class="producto-detalle">
+
+                <h2>{{ comida.nombre }}</h2>
+
+                <p>
+                    {{ comida.ingredientes.length > 0
+                        ? comida.ingredientes.join(', ')
+                        : 'Consulta los ingredientes de esta preparación.' }}
+                </p>
+
+                <div class="producto-precio">
+
+                    <span>
+                        {{ comida.precio | currency:'COP':'symbol':'1.0-0' }}
+                    </span>
+
+                    <button
+                        type="button"
+                        (click)="agregarPedido(comida)">
+                        Agregar +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
