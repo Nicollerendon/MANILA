@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #000000 !important;
+    background: #111111 !important;
     position: relative;
     z-index: 1000;
 }
