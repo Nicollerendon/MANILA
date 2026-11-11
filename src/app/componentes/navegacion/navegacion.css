@@ -105,9 +105,7 @@
     height: 2px;
     background: #C6A66B;
 }
-git add .
-git commit -m "Mejorar navegación responsive"
-git push origin main
+
 @media (max-width: 850px) {
     .navbar {
         min-height: 78px;
