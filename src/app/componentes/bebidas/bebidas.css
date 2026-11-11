@@ -155,16 +155,13 @@
     color: #C6A66B;
 }
 
-/* Categorías y tipos en una sola línea, sin línea gris */
-
 .menu-categorias {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: clamp(8px, 1.5vw, 20px);
-    margin: 20px 0 40px;
-    border: none;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin: 20px auto 40px;
     padding: 0;
     width: 100%;
 }
@@ -173,11 +170,10 @@
     background: transparent;
     border: none;
     color: #C4C4C4;
-    padding: 8px 3px;
+    padding: 9px 5px;
     cursor: pointer;
-    font-size: clamp(10px, 1vw, 14px);
+    font-size: 13px;
     white-space: nowrap;
-    flex-shrink: 1;
     transition: 0.3s;
 }
 
@@ -241,6 +237,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
     text-align: left;
     padding: 16px 5px 5px;
 }
@@ -266,6 +263,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-top: auto;
     padding-top: 15px;
@@ -306,41 +304,121 @@
 
 @media (max-width: 600px) {
     .menu-restaurante {
-        padding: 35px 18px;
+        padding: 35px 16px 50px;
     }
 
     .menu-encabezado h1 {
-        font-size: 34px;
+        font-size: 32px;
+    }
+
+    .menu-encabezado p {
+        font-size: 13px;
+    }
+
+    .subtitulo-menu {
+        font-size: 10px;
+        letter-spacing: 2px;
     }
 
     .menu-herramientas {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px;
+        margin: 25px auto;
+        width: 100%;
     }
 
     .menu-herramientas select,
     .menu-herramientas input,
     .menu-herramientas button {
         width: 100%;
+        height: 46px;
+        flex: none;
     }
 
     .menu-categorias {
-        gap: 8px;
-        flex-wrap: nowrap;
         justify-content: center;
+        gap: 5px 12px;
+        margin: 20px 0 30px;
     }
 
     .menu-categorias button {
-        font-size: 9px;
-        padding: 8px 1px;
+        font-size: 12px;
+        padding: 9px 5px;
     }
 
     .productos-galeria {
-        grid-template-columns: 1fr;
-        max-width: 400px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .producto-galeria {
+        padding: 8px;
     }
 
     .producto-foto {
-        height: 230px;
+        height: 145px;
+    }
+
+    .producto-detalle {
+        padding: 12px 2px 3px;
+    }
+
+    .producto-detalle h2 {
+        font-size: 16px;
+        margin-bottom: 7px;
+    }
+
+    .producto-detalle p {
+        font-size: 11px;
+        line-height: 1.45;
+        margin-bottom: 12px;
+    }
+
+    .producto-precio {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+        padding-top: 10px;
+    }
+
+    .producto-precio span {
+        font-size: 14px;
+    }
+
+    .producto-precio button {
+        width: 100%;
+        padding: 9px 5px;
+        font-size: 12px;
+    }
+
+    .notificacion-carrito {
+        top: 12px;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 350px) {
+    .productos-galeria {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+    }
+
+    .producto-foto {
+        height: 190px;
+    }
+
+    .producto-detalle h2 {
+        font-size: 19px;
+    }
+
+    .producto-detalle p {
+        font-size: 13px;
+    }
+
+    .producto-precio {
+        flex-direction: row;
+        align-items: center;
     }
 }
